@@ -1,0 +1,242 @@
+2025-09-06 14:58:01 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 14:58:01 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 14:58:01 | INFO | Default Model: gemma3:1b
+2025-09-06 14:58:01 | INFO | Clipboard updated - 56 characters: '*Auto-Managed Ollama**: Automatically starts and stops O'
+2025-09-06 14:58:01 | INFO | Clipboard manually refreshed - 56 characters
+2025-09-06 14:58:08 | INFO | Clipboard updated - 44 characters: 'Starting Improved Clipboard to Ollama App...'
+2025-09-06 14:58:24 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 14:58:24 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 14:58:24 | INFO | Default Model: gemma3:1b
+2025-09-06 14:58:24 | INFO | Clipboard updated - 44 characters: 'Starting Improved Clipboard to Ollama App...'
+2025-09-06 14:58:24 | INFO | Clipboard manually refreshed - 44 characters
+2025-09-06 14:58:37 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 14:58:37 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 14:58:37 | INFO | Default Model: gemma3:1b
+2025-09-06 14:58:37 | INFO | Clipboard updated - 44 characters: 'Starting Improved Clipboard to Ollama App...'
+2025-09-06 14:58:37 | INFO | Clipboard manually refreshed - 44 characters
+2025-09-06 14:58:43 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:58:47 | INFO | === NEW OLLAMA REQUEST ===
+2025-09-06 14:58:47 | INFO | Model: gemma3:1b
+2025-09-06 14:58:47 | INFO | Content length: 82 characters
+2025-09-06 14:58:47 | INFO | Content preview: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:58:47 | INFO | Sending request to http://localhost:11434/api/chat
+2025-09-06 14:58:59 | INFO | ✅ Response received in 12.7s
+2025-09-06 14:58:59 | INFO | Response length: 6565 characters
+2025-09-06 14:59:38 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:59:38 | INFO | Clipboard manually refreshed - 82 characters
+2025-09-06 14:59:40 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:59:40 | INFO | Clipboard manually refreshed - 82 characters
+2025-09-06 14:59:41 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:59:41 | INFO | Clipboard manually refreshed - 82 characters
+2025-09-06 14:59:41 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:59:41 | INFO | Clipboard manually refreshed - 82 characters
+2025-09-06 14:59:41 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:59:41 | INFO | Clipboard manually refreshed - 82 characters
+2025-09-06 14:59:41 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:59:41 | INFO | Clipboard manually refreshed - 82 characters
+2025-09-06 14:59:42 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:59:42 | INFO | Clipboard manually refreshed - 82 characters
+2025-09-06 14:59:42 | INFO | Clipboard updated - 82 characters: '**Auto-Managed Ollama**: Automatically starts and stops Ollama server with FastAPI'
+2025-09-06 14:59:42 | INFO | Clipboard manually refreshed - 82 characters
+2025-09-06 14:59:50 | INFO | Clipboard updated - 35 characters: '**: Simple text generation endpoint'
+2025-09-06 14:59:53 | INFO | === NEW OLLAMA REQUEST ===
+2025-09-06 14:59:53 | INFO | Model: gemma3:1b
+2025-09-06 14:59:53 | INFO | Content length: 35 characters
+2025-09-06 14:59:53 | INFO | Content preview: '**: Simple text generation endpoint'
+2025-09-06 14:59:53 | INFO | Sending request to http://localhost:11434/api/chat
+2025-09-06 15:00:03 | INFO | ✅ Response received in 9.5s
+2025-09-06 15:00:03 | INFO | Response length: 4905 characters
+2025-09-06 15:00:08 | INFO | Clipboard updated - 26 characters: ' Status: Response received'
+2025-09-06 15:02:53 | INFO | Clipboard updated - 75 characters: 'lipboard refreshed: '**Auto-Managed Ollama**: Automatically starts and ...''
+2025-09-06 15:02:57 | INFO | === NEW OLLAMA REQUEST ===
+2025-09-06 15:02:57 | INFO | Model: gemma3:1b
+2025-09-06 15:02:57 | INFO | Content length: 75 characters
+2025-09-06 15:02:57 | INFO | Content preview: 'lipboard refreshed: '**Auto-Managed Ollama**: Automatically starts and ...''
+2025-09-06 15:02:57 | INFO | Sending request to http://localhost:11434/api/chat
+2025-09-06 15:02:59 | INFO | ✅ Response received in 2.6s
+2025-09-06 15:02:59 | INFO | Response length: 1464 characters
+2025-09-06 15:03:48 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:03:48 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:03:48 | INFO | Default Model: gemma3:1b
+2025-09-06 15:03:48 | INFO | Clipboard updated - 75 characters: 'lipboard refreshed: '**Auto-Managed Ollama**: Automatically starts and ...''
+2025-09-06 15:03:48 | INFO | Clipboard manually refreshed - 75 characters
+2025-09-06 15:03:57 | INFO | Clipboard updated - 27 characters: 'lipboard monitoring started'
+2025-09-06 15:04:01 | INFO | === NEW OLLAMA REQUEST ===
+2025-09-06 15:04:01 | INFO | Model: gemma3:1b
+2025-09-06 15:04:01 | INFO | Content length: 27 characters
+2025-09-06 15:04:01 | INFO | Content preview: 'lipboard monitoring started'
+2025-09-06 15:04:01 | INFO | Sending request to http://localhost:11434/api/chat
+2025-09-06 15:04:07 | INFO | ✅ Response received in 6.2s
+2025-09-06 15:04:07 | INFO | Response length: 3507 characters
+2025-09-06 15:07:16 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:07:16 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:07:16 | INFO | Default Model: gemma3:1b
+2025-09-06 15:07:16 | INFO | Clipboard updated - 68 characters: 'export TK_SILENCE_DEPRECATION=1 && python3 improved_clipboard_app.py'
+2025-09-06 15:07:16 | INFO | Clipboard manually refreshed - 68 characters
+2025-09-06 15:07:21 | INFO | Clipboard updated - 30 characters: ' App window centered and ready'
+2025-09-06 15:07:28 | INFO | === NEW OLLAMA REQUEST ===
+2025-09-06 15:07:28 | INFO | Model: gemma3:1b
+2025-09-06 15:07:28 | INFO | Content length: 29 characters
+2025-09-06 15:07:28 | INFO | Content preview: 'App window centered and ready'
+2025-09-06 15:07:28 | INFO | Sending request to http://localhost:11434/api/chat
+2025-09-06 15:07:36 | INFO | ✅ Response received in 8.6s
+2025-09-06 15:07:36 | INFO | Response length: 4296 characters
+2025-09-06 15:07:48 | INFO | Clipboard updated - 16 characters: 'What You'll See:'
+2025-09-06 15:07:51 | INFO | === NEW OLLAMA REQUEST ===
+2025-09-06 15:07:51 | INFO | Model: gemma3:1b
+2025-09-06 15:07:51 | INFO | Content length: 16 characters
+2025-09-06 15:07:51 | INFO | Content preview: 'What You'll See:'
+2025-09-06 15:07:51 | INFO | Sending request to http://localhost:11434/api/chat
+2025-09-06 15:07:53 | INFO | ✅ Response received in 1.6s
+2025-09-06 15:07:53 | INFO | Response length: 795 characters
+2025-09-06 15:33:51 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:33:51 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:33:51 | INFO | Default Model: gemma3:1b
+2025-09-06 15:33:51 | INFO | Clipboard updated - 68 characters: 'export TK_SILENCE_DEPRECATION=1 && python3 improved_clipboard_app.py'
+2025-09-06 15:33:51 | INFO | Clipboard manually refreshed - 68 characters
+2025-09-06 15:34:48 | INFO | Clipboard updated - 20 characters: 'chrome://extensions/'
+2025-09-06 15:36:16 | INFO | Clipboard updated - 163 characters: 'Failed to load extension
+File
+~/Projects/ollama_test/substack_extension
+Error
+Could not load icon 'i...'
+2025-09-06 15:37:26 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:37:26 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:37:26 | INFO | Default Model: gemma3:1b
+2025-09-06 15:37:26 | INFO | Clipboard updated - 163 characters: 'Failed to load extension
+File
+~/Projects/ollama_test/substack_extension
+Error
+Could not load icon 'i...'
+2025-09-06 15:37:26 | INFO | Clipboard manually refreshed - 163 characters
+2025-09-06 15:38:22 | INFO | Clipboard updated - 61 characters: 'ce (SGE), Notion AI, and dozens of fast-moving SaaS startups.'
+2025-09-06 15:38:34 | INFO | === NEW OLLAMA REQUEST ===
+2025-09-06 15:38:34 | INFO | Model: gemma3:1b
+2025-09-06 15:38:34 | INFO | Content length: 61 characters
+2025-09-06 15:38:34 | INFO | Content preview: 'ce (SGE), Notion AI, and dozens of fast-moving SaaS startups.'
+2025-09-06 15:38:34 | INFO | Sending request to http://localhost:11434/api/chat
+2025-09-06 15:38:41 | INFO | ✅ Response received in 7.1s
+2025-09-06 15:38:41 | INFO | Response length: 3740 characters
+2025-09-06 15:42:00 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:42:00 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:42:00 | INFO | Default Model: gemma3:1b
+2025-09-06 15:42:00 | INFO | Clipboard updated - 61 characters: 'ce (SGE), Notion AI, and dozens of fast-moving SaaS startups.'
+2025-09-06 15:42:00 | INFO | Clipboard manually refreshed - 61 characters
+2025-09-06 15:42:18 | INFO | Clipboard updated - 66 characters: 'And when disruption comes from within, it often takes the shape of'
+2025-09-06 15:46:09 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:46:09 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:46:09 | INFO | Default Model: gemma3:1b
+2025-09-06 15:46:09 | INFO | Clipboard updated - 66 characters: 'And when disruption comes from within, it often takes the shape of'
+2025-09-06 15:46:09 | INFO | Clipboard manually refreshed - 66 characters
+2025-09-06 15:48:23 | INFO | Clipboard updated - 13 characters: '.substack.com'
+2025-09-06 15:50:22 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:50:22 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:50:22 | INFO | Default Model: gemma3:1b
+2025-09-06 15:50:22 | INFO | Clipboard updated - 13 characters: '.substack.com'
+2025-09-06 15:50:22 | INFO | Clipboard manually refreshed - 13 characters
+2025-09-06 15:50:30 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:50:30 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:50:30 | INFO | Default Model: gemma3:1b
+2025-09-06 15:50:30 | INFO | Clipboard updated - 13 characters: '.substack.com'
+2025-09-06 15:50:30 | INFO | Clipboard manually refreshed - 13 characters
+2025-09-06 15:50:57 | INFO | Clipboard updated - 71 characters: ' small distinction. It’s the line between something that makes your pla'
+2025-09-06 15:53:31 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 15:53:31 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 15:53:31 | INFO | Default Model: gemma3:1b
+2025-09-06 15:53:31 | INFO | Clipboard updated - 71 characters: ' small distinction. It’s the line between something that makes your pla'
+2025-09-06 15:53:31 | INFO | Clipboard manually refreshed - 71 characters
+2025-09-06 15:54:44 | INFO | Clipboard updated - 41 characters: 'arp rule of thumb is simple: if a feature'
+2025-09-06 15:55:04 | INFO | Clipboard updated - 35 characters: '—GitHub Copilot, Google’s Search Ge'
+2025-09-06 15:55:16 | INFO | Clipboard updated - 48 characters: ' just a “feature”… and when does it become a “pr'
+2025-09-06 15:57:02 | INFO | Clipboard updated - 163 characters: '
+Substack AI Writer
+1.0.0
+AI-powered writing assistant for Substack using local Ollama
+ID: loahbaejm...'
+2025-09-06 15:57:22 | INFO | Clipboard updated - 172 characters: 'Error handling response: TypeError: Cannot read properties of undefined (reading 'executeScript') at...'
+2025-09-06 16:05:39 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 16:05:39 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 16:05:39 | INFO | Default Model: gemma3:1b
+2025-09-06 16:05:39 | INFO | Clipboard updated - 172 characters: 'Error handling response: TypeError: Cannot read properties of undefined (reading 'executeScript') at...'
+2025-09-06 16:05:39 | INFO | Clipboard manually refreshed - 172 characters
+2025-09-06 16:06:05 | INFO | Clipboard updated - 55 characters: ' It’s the line between something that makes your platfo'
+2025-09-06 16:06:41 | INFO | Clipboard updated - 172 characters: 'Error handling response: TypeError: Cannot read properties of undefined (reading 'executeScript') at...'
+2025-09-06 16:08:44 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 16:08:44 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 16:08:44 | INFO | Default Model: gemma3:1b
+2025-09-06 16:08:45 | INFO | Clipboard updated - 172 characters: 'Error handling response: TypeError: Cannot read properties of undefined (reading 'executeScript') at...'
+2025-09-06 16:08:45 | INFO | Clipboard manually refreshed - 172 characters
+2025-09-06 16:11:23 | INFO | Clipboard updated - 5750 characters: ' SUBSTACK AI EXTENSION: Content script loading...
+content.js:964 🚀 URL: https://sanatmouli.substack....'
+2025-09-06 16:16:38 | INFO | Clipboard updated - 15 characters: 'testSelection()'
+2025-09-06 16:17:09 | INFO | Clipboard updated - 85 characters: 'VM1034:1 Uncaught ReferenceError: testSelection is not defined
+    at <anonymous>:1:1'
+2025-09-06 16:17:12 | INFO | Clipboard updated - 21 characters: 'forceFloatingButton()'
+2025-09-06 16:24:30 | INFO | Clipboard updated - 95 characters: 'simpleTest()
+VM1384:1 Uncaught ReferenceError: simpleTest is not defined
+    at <anonymous>:1:1'
+2025-09-06 16:25:53 | INFO | Clipboard updated - 12 characters: 'testFunction'
+2025-09-06 16:26:41 | INFO | Clipboard updated - 14 characters: 'testFunction()'
+2025-09-06 16:26:51 | INFO | Clipboard updated - 14 characters: 'testFunction()'
+2025-09-06 16:26:55 | INFO | Clipboard updated - 35 characters: 'ncaught ReferenceError: testFunctio'
+2025-09-06 16:29:19 | INFO | Clipboard updated - 11 characters: 'forceButton'
+2025-09-06 16:30:37 | INFO | Clipboard updated - 37 characters: 'ns only see domains you explicitly al'
+2025-09-06 16:30:45 | INFO | Clipboard updated - 50 characters: 'uilding modular AI software. It allows you to iter'
+2025-09-06 16:30:53 | INFO | Clipboard updated - 48 characters: 'exist. That single sentence has been echoing in '
+2025-09-06 16:31:00 | INFO | Clipboard updated - 55 characters: 'ms that compile AI programs into effective prompts and '
+2025-09-06 16:31:29 | INFO | Clipboard updated - 58 characters: 'I first started wrestling with this question after reading'
+2025-09-06 16:31:42 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 16:31:42 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 16:31:42 | INFO | Default Model: gemma3:1b
+2025-09-06 16:31:42 | INFO | Clipboard updated - 58 characters: 'I first started wrestling with this question after reading'
+2025-09-06 16:31:42 | INFO | Clipboard manually refreshed - 58 characters
+2025-09-06 16:32:22 | INFO | Clipboard updated - 45 characters: ' AI, and dozens of fast-moving SaaS startups.'
+2025-09-06 16:32:43 | INFO | Clipboard updated - 141 characters: 'behavior. The real challenge is when it changes behavior so much that it disrupts your own product e...'
+2025-09-06 16:33:42 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 16:33:42 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 16:33:42 | INFO | Default Model: gemma3:1b
+2025-09-06 16:33:42 | INFO | Clipboard updated - 141 characters: 'behavior. The real challenge is when it changes behavior so much that it disrupts your own product e...'
+2025-09-06 16:33:42 | INFO | Clipboard manually refreshed - 141 characters
+2025-09-06 16:33:48 | INFO | Clipboard updated - 76 characters: 'shouldn’t exist. That single sentence has been echoing in my head as I watch'
+2025-09-06 16:34:11 | INFO | Clipboard updated - 37 characters: 'That single sentence has been echoing'
+2025-09-06 16:34:14 | INFO | Clipboard updated - 18 characters: 'stion after readin'
+2025-09-06 16:34:28 | INFO | Clipboard updated - 57 characters: 'versus something that upends your core business. Features'
+2025-09-06 16:36:14 | INFO | Clipboard updated - 35 characters: 'mes from within, it often takes the'
+2025-09-06 16:36:15 | INFO | Clipboard updated - 35 characters: 'single sentence has been echoing in'
+2025-09-06 16:36:16 | INFO | Clipboard updated - 39 characters: 'e use—GitHub Copilot, Google’s Search G'
+2025-09-06 16:36:29 | INFO | Clipboard updated - 54 characters: 'omething that upends your core business. Features enha'
+2025-09-06 16:36:48 | INFO | Clipboard updated - 804 characters: 'working_content.js:145 Uncaught TypeError: Cannot read properties of null (reading 'style')
+    at w...'
+2025-09-06 16:37:00 | INFO | Clipboard updated - 61 characters: 'ouldn’t exist. That single sentence has been echoing in my he'
+2025-09-06 16:37:15 | INFO | Clipboard updated - 65 characters: 'ething that upends your core business. Features enhance; products'
+2025-09-06 16:39:38 | INFO | Clipboard updated - 79 characters: 't started wrestling with this question after reading Gokul Rajaram’s writing on'
+2025-09-06 16:40:36 | INFO | Clipboard updated - 57 characters: 'His sharp rule of thumb is simple: if a feature doesn’t m'
+2025-09-06 16:40:42 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 16:40:42 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 16:40:42 | INFO | Default Model: gemma3:1b
+2025-09-06 16:40:42 | INFO | Clipboard updated - 57 characters: 'His sharp rule of thumb is simple: if a feature doesn’t m'
+2025-09-06 16:40:42 | INFO | Clipboard manually refreshed - 57 characters
+2025-09-06 16:41:20 | INFO | Clipboard updated - 72 characters: 'ed wrestling with this question after reading Gokul Rajaram’s writing on'
+2025-09-06 16:41:31 | INFO | Clipboard updated - 782 characters: 'Access to fetch at 'http://localhost:11434/api/chat' from origin 'https://sanatmouli.substack.com' h...'
+2025-09-06 16:42:42 | INFO | Clipboard updated - 143 characters: 'ne. His sharp rule of thumb is simple: if a feature doesn’t move customer behavior, it shouldn’t exi...'
+2025-09-06 16:42:45 | INFO | Clipboard updated - 34 characters: 'Experience (SGE), Notion AI, and d'
+2025-09-06 16:42:47 | INFO | Clipboard updated - 110 characters: 'een echoing in my head as I watch AI seep into every product we use—GitHub Copilot, Google’s Search ...'
+2025-09-06 16:42:49 | INFO | Clipboard updated - 28 characters: 'hat single sentence has been'
+2025-09-06 16:42:50 | INFO | Clipboard updated - 12 characters: 'r core busin'
+2025-09-06 16:42:55 | INFO | Clipboard updated - 50 characters: 'ine. His sharp rule of thumb is simple: if a featu'
+2025-09-06 16:43:03 | INFO | Clipboard updated - 1195 characters: 'Access to fetch at 'http://localhost:11434/api/chat' from origin 'https://sanatmouli.substack.com' h...'
+2025-09-06 16:44:41 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 16:44:41 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 16:44:41 | INFO | Default Model: gemma3:1b
+2025-09-06 16:44:41 | INFO | Clipboard updated - 1195 characters: 'Access to fetch at 'http://localhost:11434/api/chat' from origin 'https://sanatmouli.substack.com' h...'
+2025-09-06 16:44:41 | INFO | Clipboard manually refreshed - 1195 characters
+2025-09-06 16:45:29 | INFO | Clipboard updated - 43 characters: 'when disruption comes from within, it often'
+2025-09-06 16:45:42 | INFO | Clipboard updated - 38 characters: 'AI seep into every product we use—GitH'
+2025-09-06 16:45:50 | INFO | Clipboard updated - 54 characters: 'g every product we use. ”ub Copilot, Google’s Search G'
+2025-09-06 16:46:02 | INFO | Clipboard updated - 19 characters: 'become a “product”?'
+2025-09-06 16:46:05 | INFO | Clipboard updated - 7501 characters: '?
+
+This isn’t a small distinction. It’s the line between something that makes your platform stickier...'
+2025-09-06 16:46:07 | INFO | Clipboard updated - 7166 characters: 'n.
+
+I first started wrestling with this question after reading Gokul Rajaram’s writing on product di...'

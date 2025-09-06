@@ -1,0 +1,27 @@
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="aiGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="24" cy="24" r="22" fill="url(#aiGradient)" stroke="white" stroke-width="2"/>
+  
+  <!-- Robot face -->
+  <circle cx="18" cy="18" r="2" fill="white" opacity="0.9"/>
+  <circle cx="30" cy="18" r="2" fill="white" opacity="0.9"/>
+  
+  <!-- Smile -->
+  <path d="M 16 28 Q 24 34 32 28" stroke="white" stroke-width="2" fill="none" opacity="0.9"/>
+  
+  <!-- Text indicator -->
+  <rect x="12" y="32" width="8" height="1.5" fill="white" opacity="0.7" rx="0.5"/>
+  <rect x="12" y="35" width="12" height="1.5" fill="white" opacity="0.7" rx="0.5"/>
+  <rect x="12" y="38" width="6" height="1.5" fill="white" opacity="0.7" rx="0.5"/>
+  
+  <!-- AI sparkle -->
+  <circle cx="36" cy="12" r="1" fill="white" opacity="0.8"/>
+  <path d="M 36 8 L 37 11 L 40 12 L 37 13 L 36 16 L 35 13 L 32 12 L 35 11 Z" fill="white" opacity="0.6"/>
+</svg>

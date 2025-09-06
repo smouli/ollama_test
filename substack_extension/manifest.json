@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "Substack AI Writer",
+  "version": "1.0.0",
+  "description": "AI-powered writing assistant for Substack using local Ollama",
+  
+  "permissions": [
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "*://*.substack.com/*",
+    "http://localhost:11434/*",
+    "http://127.0.0.1:11434/*"
+  ],
+  
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Substack AI Writer"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["*://*.substack.com/*", "*://substack.com/*", "https://*/*"],
+      "js": ["working_content.js"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "background": {
+    "service_worker": "background.js"
+  },
+  
+  
+  "web_accessible_resources": [
+    {
+      "resources": ["content.css"],
+      "matches": ["*://*.substack.com/*"]
+    }
+  ]
+}

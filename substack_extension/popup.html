@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Substack AI Writer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="icon">🤖</div>
+                <h1>AI Writer</h1>
+            </div>
+            <div class="status-indicator" id="status">
+                <div class="dot offline"></div>
+                <span>Connecting...</span>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="action-btn primary" id="improveBtn">
+                <span class="icon">✨</span>
+                <span>Improve Selected</span>
+            </button>
+            <button class="action-btn" id="summarizeBtn">
+                <span class="icon">📝</span>
+                <span>Summarize</span>
+            </button>
+            <button class="action-btn" id="expandBtn">
+                <span class="icon">🔍</span>
+                <span>Expand Ideas</span>
+            </button>
+        </div>
+
+        <!-- Model Selection -->
+        <div class="section">
+            <label for="modelSelect">AI Model:</label>
+            <select id="modelSelect" class="select-field">
+                <option value="gemma3:1b">Gemma 3 (1B) - Fast</option>
+                <option value="llama3.2:3b">Llama 3.2 (3B) - Balanced</option>
+                <option value="mistral:7b">Mistral (7B) - Advanced</option>
+            </select>
+        </div>
+
+        <!-- Custom Prompt -->
+        <div class="section">
+            <label for="customPrompt">Custom Instructions:</label>
+            <textarea 
+                id="customPrompt" 
+                class="textarea-field" 
+                placeholder="e.g., 'Make this more engaging and add examples'"
+                rows="3"
+            ></textarea>
+            <button class="action-btn secondary" id="customBtn">
+                <span class="icon">🎯</span>
+                <span>Apply Custom</span>
+            </button>
+        </div>
+
+        <!-- Settings -->
+        <div class="section collapsible">
+            <div class="section-header" id="settingsToggle">
+                <span>⚙️ Settings</span>
+                <span class="chevron">›</span>
+            </div>
+            <div class="section-content" id="settingsContent">
+                <div class="setting-row">
+                    <label for="temperature">Creativity:</label>
+                    <input type="range" id="temperature" min="0" max="1" step="0.1" value="0.7">
+                    <span id="tempValue">0.7</span>
+                </div>
+                <div class="setting-row">
+                    <label for="maxTokens">Max Words:</label>
+                    <input type="number" id="maxTokens" min="50" max="2000" value="500" class="number-field">
+                </div>
+                <div class="setting-row">
+                    <label>
+                        <input type="checkbox" id="autoReplace"> 
+                        Auto-replace selected text
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="spinner"></div>
+            <p>AI is thinking...</p>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

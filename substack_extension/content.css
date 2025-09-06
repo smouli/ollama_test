@@ -1,0 +1,351 @@
+/* Styles for Substack AI Writer Extension content script */
+
+/* AI Panel Styles */
+.substack-ai-panel {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: #333 !important;
+    line-height: 1.5 !important;
+    transition: all 0.2s ease !important;
+}
+
+.ai-panel-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    padding: 15px 20px !important;
+    border-radius: 12px 12px 0 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+}
+
+.ai-panel-close {
+    background: none !important;
+    border: none !important;
+    color: white !important;
+    font-size: 20px !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    width: 24px !important;
+    height: 24px !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.2s ease !important;
+}
+
+.ai-panel-close:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.ai-panel-content {
+    padding: 20px !important;
+    max-height: 400px !important;
+    overflow-y: auto !important;
+}
+
+/* Selected Text Preview */
+.selected-text-preview {
+    background: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 6px !important;
+    padding: 10px !important;
+    margin-bottom: 15px !important;
+    font-size: 12px !important;
+    color: #6c757d !important;
+    display: none !important;
+    max-height: 60px !important;
+    overflow: hidden !important;
+}
+
+/* AI Action Buttons */
+.ai-actions {
+    display: grid !important;
+    gap: 8px !important;
+    margin-bottom: 15px !important;
+}
+
+.ai-action-btn {
+    background: #f8f9fa !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 6px !important;
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    text-align: left !important;
+    color: #495057 !important;
+}
+
+.ai-action-btn:hover {
+    background: #e9ecef !important;
+    border-color: #667eea !important;
+    transform: translateY(-1px) !important;
+}
+
+.ai-action-btn:active {
+    transform: translateY(0) !important;
+}
+
+/* Custom Prompt Section */
+.custom-prompt-section {
+    border-top: 1px solid #e9ecef !important;
+    padding-top: 15px !important;
+    margin-bottom: 15px !important;
+}
+
+.custom-prompt {
+    width: 100% !important;
+    padding: 10px !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    font-family: inherit !important;
+    resize: vertical !important;
+    margin-bottom: 10px !important;
+    box-sizing: border-box !important;
+}
+
+.custom-prompt:focus {
+    outline: none !important;
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1) !important;
+}
+
+.custom-btn {
+    background: #17a2b8 !important;
+    color: white !important;
+    border-color: #17a2b8 !important;
+}
+
+.custom-btn:hover {
+    background: #138496 !important;
+    border-color: #138496 !important;
+}
+
+/* AI Response Section */
+.ai-response {
+    border-top: 1px solid #e9ecef !important;
+    padding-top: 15px !important;
+}
+
+.response-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 10px !important;
+    font-weight: 600 !important;
+    font-size: 13px !important;
+}
+
+.response-actions {
+    display: flex !important;
+    gap: 8px !important;
+}
+
+.response-btn {
+    background: #667eea !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px !important;
+    padding: 6px 12px !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+}
+
+.response-btn:hover {
+    background: #5a6fd8 !important;
+}
+
+.response-text {
+    background: #ffffff !important;
+    border: 1px solid #e9ecef !important;
+    border-radius: 6px !important;
+    padding: 12px !important;
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+    max-height: 200px !important;
+    overflow-y: auto !important;
+    white-space: pre-wrap !important;
+}
+
+/* Loading State */
+.loading-state {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 15px !important;
+    justify-content: center !important;
+    color: #667eea !important;
+}
+
+.spinner {
+    width: 20px !important;
+    height: 20px !important;
+    border: 2px solid #f3f3f3 !important;
+    border-top: 2px solid #667eea !important;
+    border-radius: 50% !important;
+    animation: spin 1s linear infinite !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error State */
+.error-state {
+    background: #ffe6e6 !important;
+    color: #d93025 !important;
+    padding: 10px !important;
+    border-radius: 6px !important;
+    font-size: 13px !important;
+    text-align: center !important;
+}
+
+/* Floating AI Button Animation */
+.substack-ai-button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.substack-ai-button:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4) !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .substack-ai-panel {
+        width: calc(100vw - 40px) !important;
+        max-width: 320px !important;
+        right: 20px !important;
+    }
+    
+    .ai-panel-content {
+        max-height: 300px !important;
+    }
+}
+
+/* Scroll Styles */
+.ai-panel-content::-webkit-scrollbar,
+.response-text::-webkit-scrollbar {
+    width: 6px !important;
+}
+
+.ai-panel-content::-webkit-scrollbar-track,
+.response-text::-webkit-scrollbar-track {
+    background: #f1f1f1 !important;
+    border-radius: 3px !important;
+}
+
+.ai-panel-content::-webkit-scrollbar-thumb,
+.response-text::-webkit-scrollbar-thumb {
+    background: #c1c1c1 !important;
+    border-radius: 3px !important;
+}
+
+.ai-panel-content::-webkit-scrollbar-thumb:hover,
+.response-text::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8 !important;
+}
+
+/* Floating AI Button */
+.ai-floating-button {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+.ai-floating-button:hover {
+    transform: scale(1.1) translateY(-2px) !important;
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4) !important;
+}
+
+.ai-floating-button:active {
+    transform: scale(0.95) translateY(0) !important;
+}
+
+/* Floating button animation classes */
+@keyframes buttonPulse {
+    0%, 100% { 
+        transform: scale(1) translateY(0); 
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    50% { 
+        transform: scale(1.05) translateY(-1px); 
+        box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+}
+
+.ai-floating-button.processing {
+    animation: buttonPulse 1.5s ease-in-out infinite !important;
+}
+
+/* Success/Error states */
+.ai-floating-button.success {
+    background: linear-gradient(135deg, #2ed573 0%, #27ae60 100%) !important;
+}
+
+.ai-floating-button.error {
+    background: linear-gradient(135deg, #ff4757 0%, #c44569 100%) !important;
+}
+
+.ai-floating-button.waiting {
+    background: linear-gradient(135deg, #ffa502 0%, #ff6348 100%) !important;
+}
+
+/* High specificity to override Substack styles */
+[data-testid="composer"] .substack-ai-panel,
+.ProseMirror-focused .substack-ai-panel,
+.post-composer .substack-ai-panel {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+/* Ensure AI elements don't interfere with Substack */
+.substack-ai-panel *,
+.ai-floating-button * {
+    box-sizing: border-box !important;
+}
+
+.substack-ai-panel,
+.substack-ai-button,
+.ai-floating-button {
+    all: unset !important;
+}
+
+/* Then reapply our specific styles */
+.substack-ai-panel {
+    position: fixed !important;
+    background: white !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
+    z-index: 10001 !important;
+    display: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
+.ai-floating-button {
+    position: fixed !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 18px !important;
+    width: 36px !important;
+    height: 36px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+    transition: all 0.2s ease !important;
+    z-index: 10000 !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
