@@ -190,7 +190,7 @@ class SubstackAIOverlay {
                 padding: 16px;
                 padding-bottom: 70px;
                 height: calc(100% - 60px);
-                overflow: hidden;
+                overflow-y: auto;
                 box-sizing: border-box;
             }
             
@@ -339,17 +339,17 @@ class SubstackAIOverlay {
             const systemPrompt = `ROLE: You are a subtle writing assistant who enhances text naturally.
 TASK: Improve the selected text while preserving its original structure and tone.
 INSTRUCTIONS:
-- If the sentence is SHORT or INCOMPLETE: Add natural, logical details to complete it without changing the core meaning.
+- If the sentence is INCOMPLETE: Keep the original sentence exactly as written, only ADD words to complete it naturally. Do not rewrite or change existing words except to remove unnecessary prepositions if needed.
 - If the sentence is already COMPLETE: Make minor improvements for clarity and flow.
-- Keep the original sentence structure and style as much as possible.
-- Add only necessary details - don't be overly dramatic or flowery.
+- For incomplete sentences: preserve every original word and just extend the thought.
 - Maintain a natural, professional tone.
 - Keep output to 1-2 sentences maximum.
-- Focus on clarity and completeness, not dramatic transformation.
+- Focus on completion by addition, not transformation.
 EXAMPLES:
-- "this man is eating" → "This man is eating lunch at his desk."
-- "the car is fast" → "The car is fast enough to handle highway speeds comfortably."
-- "she was walking" → "She was walking to the nearby coffee shop."
+- "this man is eating" → "this man is eating lunch at his desk"
+- "the car is fast" → "the car is fast enough to handle highway speeds"
+- "she was walking to" → "she was walking to the nearby coffee shop"
+- "I think that that" → "I think that this approach will work" (removing redundant preposition)
 OUTPUT_FORMAT: Return only the enhanced text, no explanations.`;
 
             // User prompt with the selected text

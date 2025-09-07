@@ -360,3 +360,18 @@ TASK: Given the selecte...'
 2025-09-06 18:12:03 | INFO | Clipboard updated - 649 characters: '            const systemPrompt = `ROLE: You are an expert writing assistant.
 TASK: Given the selecte...'
 2025-09-06 18:12:03 | INFO | Clipboard manually refreshed - 649 characters
+2025-09-06 18:20:45 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 18:20:45 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 18:20:45 | INFO | Default Model: gemma3:1b
+2025-09-06 18:20:45 | INFO | Clipboard updated - 27 characters: 'Coding with AI Assistants: '
+2025-09-06 18:20:45 | INFO | Clipboard manually refreshed - 27 characters
+2025-09-06 18:21:56 | INFO | Clipboard updated - 51 characters: 'to focus more on creativity and big-picture design.'
+2025-09-06 18:23:10 | INFO | Clipboard updated - 970 characters: 'const systemPrompt = `ROLE: You are a subtle writing assistant who enhances text naturally.
+TASK: Im...'
+2025-09-06 18:24:37 | INFO | === Clipboard to Ollama App Started ===
+2025-09-06 18:24:37 | INFO | Ollama URL: http://localhost:11434
+2025-09-06 18:24:37 | INFO | Default Model: gemma3:1b
+2025-09-06 18:24:37 | INFO | Clipboard updated - 970 characters: 'const systemPrompt = `ROLE: You are a subtle writing assistant who enhances text naturally.
+TASK: Im...'
+2025-09-06 18:24:37 | INFO | Clipboard manually refreshed - 970 characters
+2025-09-06 18:30:33 | INFO | Clipboard updated - 82 characters: 'https://drive.google.com/file/d/1caYC9q9uA7BlvLefWeyILOzunKYpCZjK/view?usp=sharing'

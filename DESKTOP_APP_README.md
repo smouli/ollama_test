@@ -58,6 +58,11 @@ python clipboard_ollama_app.py
 python enhanced_clipboard_app.py
 ```
 
+### Improved Application with Enhanced Logging
+```bash
+export TK_SILENCE_DEPRECATION=1 && python3 improved_clipboard_app.py
+```
+
 ## 🎛 Application Interface
 
 ### Main Tab
