@@ -1,307 +1,375 @@
-// Working Substack AI Extension - Simplified but functional
-console.log('🚀 SUBSTACK AI EXTENSION: Starting...');
-console.log('🚀 Script loading at:', new Date().toISOString());
-console.log('🚀 Document ready state:', document.readyState);
+// Substack AI Extension - UI Overlay Version
+console.log('🚀 SUBSTACK AI EXTENSION: Starting UI Overlay Version...');
 
-class SimpleSubstackAI {
+class SubstackAIOverlay {
     constructor() {
         this.selectedText = '';
-        this.autoSendTimer = null;
-        this.floatingButton = null;
+        this.currentSelection = null;
+        this.overlayTimeout = null;
+        this.overlay = null;
         this.ollamaUrl = 'http://localhost:11434';
         this.model = 'gemma3:1b';
-        this.textBuffer = '';
-        this.bufferTimer = null;
+        this.isActive = false;
+        this.overlayDismissed = false; // Flag to prevent re-showing until new selection
         
         this.init();
     }
     
     init() {
-        console.log('✅ SimpleSubstackAI initialized');
-        console.log('🔧 About to setup listeners...');
-        this.setupGlobalSelectionListener();
-        console.log('🔧 Listeners setup completed');
+        console.log('✅ SubstackAIOverlay initialized');
+        
+        // Only activate on publish/post pages (writing/editing)
+        if (!this.isWritingPage()) {
+            console.log('❌ Not a writing page - AI assistant disabled');
+            console.log('📝 AI assistant only works on /publish/post/ pages');
+            return;
+        }
+        
+        console.log('✅ Writing page detected - AI assistant enabled');
+        this.setupSelectionListener();
+        this.createOverlayStyles();
+        this.setupNavigationWatcher();
     }
     
-    setupGlobalSelectionListener() {
-        // Multiple ways to detect selection
-        document.addEventListener('selectionchange', () => {
-            console.log('📝 Selection change event fired');
-            setTimeout(() => this.handleSelection(), 50);
-        });
+    isWritingPage() {
+        const url = window.location.href;
+        const pathname = window.location.pathname;
         
-        // Mouse events
+        // Check if we're on a publish/post page (writing/editing)
+        const isPublishPost = pathname.includes('/publish/post/');
+        
+        console.log('🔍 Page check:');
+        console.log('  - URL:', url);
+        console.log('  - Pathname:', pathname);
+        console.log('  - Is publish/post page:', isPublishPost);
+        
+        return isPublishPost;
+    }
+    
+    setupNavigationWatcher() {
+        // Watch for navigation changes in SPA
+        let lastUrl = window.location.href;
+        
+        const checkNavigation = () => {
+            const currentUrl = window.location.href;
+            if (currentUrl !== lastUrl) {
+                console.log('🔄 Navigation detected:', currentUrl);
+                lastUrl = currentUrl;
+                
+                // If we navigated away from a writing page, hide overlay and disable
+                if (!this.isWritingPage()) {
+                    console.log('❌ Navigated away from writing page - disabling AI assistant');
+                    this.hideOverlay();
+                    this.isActive = false;
+                } else if (!this.isActive) {
+                    console.log('✅ Navigated to writing page - enabling AI assistant');
+                    this.isActive = true;
+                }
+            }
+        };
+        
+        // Check navigation every 500ms
+        setInterval(checkNavigation, 500);
+        
+        // Also listen for browser navigation events
+        window.addEventListener('popstate', checkNavigation);
+        
+        this.isActive = true;
+        console.log('👁️ Navigation watcher setup');
+    }
+    
+    setupSelectionListener() {
+        // Listen for text selection
         document.addEventListener('mouseup', () => {
-            console.log('🖱️ Mouse up event');
             setTimeout(() => this.handleSelection(), 100);
         });
         
-        // Keyboard events (including Ctrl+C)
-        document.addEventListener('keydown', (e) => {
-            console.log('⌨️ Key pressed:', e.key, e.code);
-            
-            // Detect Ctrl+C
-            if ((e.ctrlKey || e.metaKey) && e.key === 'c') {
-                console.log('📋 Ctrl+C detected!');
-                setTimeout(() => {
-                    this.handleClipboardCopy();
-                }, 100);
-            }
-            
-            // Also check for any key that might affect selection
+        document.addEventListener('selectionchange', () => {
             setTimeout(() => this.handleSelection(), 50);
         });
         
-        // Focus events
-        document.addEventListener('focusin', () => {
-            console.log('👁️ Focus in event');
-            setTimeout(() => this.handleSelection(), 50);
-        });
-        
-        console.log('🎯 All selection listeners setup complete');
-    }
-    
-    async handleClipboardCopy() {
-        console.log('📋 Handling Ctrl+C clipboard copy...');
-        
-        try {
-            // Get current clipboard content
-            const clipboardText = await navigator.clipboard.readText();
-            console.log('📋 Clipboard content:', clipboardText.substring(0, 50));
-            
-            if (clipboardText && clipboardText.trim().length > 5) {
-                console.log('✅ Found clipboard text, triggering AI improvement...');
-                this.selectedText = clipboardText.trim();
-                
-                // Show button at cursor position or fixed location
-                this.showButtonAtCursor();
-                
-                // Auto-send after 500ms
-                if (this.selectedText.length > 10) {
-                    this.scheduleAutoSend();
-                }
-            }
-        } catch (error) {
-            console.warn('📋 Could not read clipboard:', error);
-            // Fallback to selection
-            this.handleSelection();
-        }
-    }
-    
-    showButtonAtCursor() {
-        // Get cursor position or use selection if available
-        const selection = window.getSelection();
-        let rect = { top: 100, left: 200, width: 100, height: 20 };
-        
-        if (selection.rangeCount > 0) {
-            rect = selection.getRangeAt(0).getBoundingClientRect();
-        } else {
-            // Use mouse position or fixed position
-            rect = {
-                top: window.innerHeight / 2,
-                left: window.innerWidth / 2,
-                width: 100,
-                height: 20
-            };
-        }
-        
-        this.showButtonAtPosition(rect);
-    }
-    
-    showButtonAtPosition(rect) {
-        console.log('🎈 Creating button at position:', rect);
-        
-        // Remove existing button
-        this.removeButton();
-        
-        // Create button
-        this.floatingButton = document.createElement('div');
-        this.floatingButton.innerHTML = '🤖✨';
-        this.floatingButton.className = 'substack-ai-button';
-        this.floatingButton.title = 'AI will improve this text in 0.5s (click to send now)';
-        
-        // Position and style
-        this.floatingButton.style.cssText = `
-            position: fixed;
-            top: ${Math.max(10, rect.top - 45)}px;
-            left: ${Math.max(10, Math.min(window.innerWidth - 50, rect.left + (rect.width / 2) - 18))}px;
-            z-index: 10000;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            border: none;
-            border-radius: 18px;
-            width: 36px;
-            height: 36px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-            transition: all 0.2s ease;
-            opacity: 0;
-            transform: scale(0.8);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        `;
-        
-        document.body.appendChild(this.floatingButton);
-        
-        // Animate in
-        setTimeout(() => {
-            if (this.floatingButton && this.floatingButton.style) {
-                this.floatingButton.style.opacity = '1';
-                this.floatingButton.style.transform = 'scale(1)';
-            }
-        }, 10);
-        
-        // Click handler
-        this.floatingButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            this.cancelAutoSend();
-            this.sendToOllama();
-        });
-        
-        console.log('🎈 Floating button created at position');
+        console.log('👂 Selection listeners setup');
     }
     
     handleSelection() {
+        // Only work if we're on an active writing page
+        if (!this.isActive) {
+            return;
+        }
+        
         const selection = window.getSelection();
         const selectedText = selection.toString().trim();
         
-        // Remove existing button
-        this.removeButton();
+        // Clear existing overlay timeout
+        if (this.overlayTimeout) {
+            clearTimeout(this.overlayTimeout);
+        }
+        
+        // Hide existing overlay
+        this.hideOverlay();
         
         if (selectedText.length > 5) {
             console.log('🎯 Text selected:', selectedText.substring(0, 50));
             
-            // Add to buffer with 500ms delay
-            this.addToBuffer(selectedText, selection);
-        }
-    }
-    
-    addToBuffer(text, selection) {
-        // Clear existing buffer timer
-        if (this.bufferTimer) {
-            clearTimeout(this.bufferTimer);
-        }
-        
-        // Update buffer
-        this.textBuffer = text;
-        console.log('📥 Text added to buffer, waiting 500ms...');
-        
-        // Show button immediately
-        this.selectedText = text;
-        this.showButton(selection);
-        
-        // Schedule processing after 500ms
-        this.bufferTimer = setTimeout(() => {
-            console.log('⏰ 500ms elapsed, processing buffered text...');
-            this.processBuffer();
-        }, 500);
-    }
-    
-    processBuffer() {
-        if (this.textBuffer && this.textBuffer.length > 10) {
-            console.log('🔄 Processing buffer:', this.textBuffer.substring(0, 50));
-            this.selectedText = this.textBuffer;
-            this.scheduleAutoSend();
-        }
-    }
-    
-    showButton(selection) {
-        if (selection.rangeCount === 0) return;
-        
-        const range = selection.getRangeAt(0);
-        const rect = range.getBoundingClientRect();
-        
-        this.showButtonAtPosition(rect);
-    }
-    
-    removeButton() {
-        if (this.floatingButton && this.floatingButton.style) {
-            this.floatingButton.style.opacity = '0';
-            this.floatingButton.style.transform = 'scale(0.8)';
+            // Check if this is a new selection (different text or reset flag)
+            const isNewSelection = this.selectedText !== selectedText;
             
-            setTimeout(() => {
-                if (this.floatingButton && this.floatingButton.parentNode) {
-                    this.floatingButton.parentNode.removeChild(this.floatingButton);
-                }
-                this.floatingButton = null;
-            }, 200);
+            this.selectedText = selectedText;
+            this.currentSelection = selection.rangeCount > 0 ? selection.getRangeAt(0) : null;
+            
+            // Reset dismissal flag for new selections
+            if (isNewSelection) {
+                this.overlayDismissed = false;
+                console.log('🔄 New selection detected, resetting dismissal flag');
+            }
+            
+            // Only show overlay if not previously dismissed for this selection
+            if (!this.overlayDismissed) {
+                console.log('⏰ Scheduling overlay to show in 500ms');
+                this.overlayTimeout = setTimeout(() => {
+                    this.showOverlay();
+                }, 500);
+            } else {
+                console.log('🚫 Overlay dismissed for this selection, not showing');
+            }
         }
     }
     
-    scheduleAutoSend() {
-        this.cancelAutoSend();
-        
-        // Update button appearance
-        if (this.floatingButton && this.floatingButton.style) {
-            this.floatingButton.innerHTML = '⏳';
-            this.floatingButton.title = 'Auto-sending in 0.5s... (click to send now)';
-            this.floatingButton.style.background = 'linear-gradient(135deg, #ffa502 0%, #ff6348 100%)';
-        }
-        
-        // Set timer
-        this.autoSendTimer = setTimeout(() => {
-            this.sendToOllama();
-        }, 500);
-        
-        console.log('⏰ Auto-send scheduled for 500ms');
+    createOverlayStyles() {
+        const style = document.createElement('style');
+        style.textContent = `
+            .ai-overlay {
+                position: fixed;
+                background: white;
+                border: 2px solid #4f46e5;
+                border-radius: 12px;
+                box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+                z-index: 10000;
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+                width: 400px;
+                height: 350px;
+                animation: slideIn 0.3s ease-out;
+            }
+            
+            @keyframes slideIn {
+                from { opacity: 0; transform: scale(0.9) translateY(-10px); }
+                to { opacity: 1; transform: scale(1) translateY(0); }
+            }
+            
+            .ai-overlay-header {
+                background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+                color: white;
+                padding: 12px 16px;
+                font-weight: 600;
+                font-size: 14px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            
+            .ai-overlay-close {
+                background: none;
+                border: none;
+                color: white;
+                font-size: 18px;
+                cursor: pointer;
+                padding: 0;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 4px;
+            }
+            
+            .ai-overlay-close:hover {
+                background: rgba(255,255,255,0.2);
+            }
+            
+            .ai-overlay-content {
+                padding: 16px;
+                padding-bottom: 70px;
+                height: calc(100% - 60px);
+                overflow: hidden;
+                box-sizing: border-box;
+            }
+            
+            .ai-original {
+                background: #f3f4f6;
+                padding: 12px;
+                border-radius: 8px;
+                margin-bottom: 12px;
+                font-size: 13px;
+                color: #374151;
+                border-left: 3px solid #9ca3af;
+            }
+            
+            .ai-suggestion {
+                background: #f0f9ff;
+                padding: 12px;
+                border-radius: 8px;
+                margin-bottom: 16px;
+                font-size: 14px;
+                color: #1f2937;
+                border-left: 3px solid #3b82f6;
+                height: 120px;
+                white-space: pre-wrap;
+                overflow-y: auto;
+            }
+            
+            .ai-loading {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 60px;
+                color: #6b7280;
+                font-style: italic;
+                font-size: 14px;
+            }
+            
+            .ai-overlay-buttons {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: flex;
+                gap: 8px;
+                justify-content: flex-end;
+                padding: 16px;
+                background: white;
+                border-top: 1px solid #e5e7eb;
+                border-radius: 0 0 10px 10px;
+            }
+            
+            .ai-btn {
+                padding: 8px 16px;
+                border: none;
+                border-radius: 6px;
+                font-size: 13px;
+                font-weight: 500;
+                cursor: pointer;
+                transition: all 0.2s ease;
+            }
+            
+            .ai-btn-apply {
+                background: #10b981;
+                color: white;
+            }
+            
+            .ai-btn-apply:hover {
+                background: #059669;
+            }
+            
+            .ai-btn-copy {
+                background: #3b82f6;
+                color: white;
+            }
+            
+            .ai-btn-copy:hover {
+                background: #2563eb;
+            }
+            
+            .ai-btn-cancel {
+                background: #e5e7eb;
+                color: #374151;
+            }
+            
+            .ai-btn-cancel:hover {
+                background: #d1d5db;
+            }
+        `;
+        document.head.appendChild(style);
     }
     
-    cancelAutoSend() {
-        if (this.autoSendTimer) {
-            clearTimeout(this.autoSendTimer);
-            this.autoSendTimer = null;
-        }
-    }
-    
-    async sendToOllama() {
+    showOverlay() {
         if (!this.selectedText) return;
         
-        console.log('🚀 Sending to Ollama:', this.selectedText.substring(0, 50));
+        // Calculate position
+        const selection = window.getSelection();
+        let rect = { top: 100, left: 200, width: 200, height: 20 };
         
-        // Update button to show processing
-        if (this.floatingButton && this.floatingButton.style) {
-            this.floatingButton.innerHTML = '⚡';
-            this.floatingButton.title = 'AI is improving your text...';
-            this.floatingButton.style.background = 'linear-gradient(135deg, #2ed573 0%, #17a2b8 100%)';
-            this.floatingButton.style.pointerEvents = 'none';
+        if (selection.rangeCount > 0) {
+            rect = selection.getRangeAt(0).getBoundingClientRect();
         }
         
+        // Create overlay
+        this.overlay = document.createElement('div');
+        this.overlay.className = 'ai-overlay';
+        this.overlay.style.top = Math.min(window.innerHeight - 450, Math.max(10, rect.bottom + 10)) + 'px';
+        this.overlay.style.left = Math.min(window.innerWidth - 420, Math.max(10, rect.left)) + 'px';
+        
+        this.overlay.innerHTML = `
+            <div class="ai-overlay-header">
+                <span>🤖 AI Text Improvement</span>
+                <button class="ai-overlay-close">×</button>
+            </div>
+            <div class="ai-overlay-content">
+                <div class="ai-original">
+                    <strong>Original:</strong><br>
+                    ${this.escapeHtml(this.selectedText)}
+                </div>
+                <div class="ai-suggestion">
+                    <div class="ai-loading">
+                        🔄 AI is improving your text...
+                    </div>
+                </div>
+                <div class="ai-overlay-buttons">
+                    <button class="ai-btn ai-btn-cancel">Cancel</button>
+                    <button class="ai-btn ai-btn-copy" disabled>Copy</button>
+                    <button class="ai-btn ai-btn-apply" disabled>Apply</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(this.overlay);
+        
+        // Event listeners
+        this.overlay.querySelector('.ai-overlay-close').addEventListener('click', () => this.hideOverlay());
+        this.overlay.querySelector('.ai-btn-cancel').addEventListener('click', () => this.hideOverlay());
+        
+        console.log('📱 Overlay shown, calling AI...');
+        
+        // Start AI processing
+        this.processWithAI();
+    }
+    
+    async processWithAI() {
         try {
-            // Copy to clipboard
-            await navigator.clipboard.writeText(this.selectedText);
-            console.log('📋 Text copied to clipboard');
+            // System prompt - defines the AI's role and behavior
+            const systemPrompt = `ROLE: You are a subtle writing assistant who enhances text naturally.
+TASK: Improve the selected text while preserving its original structure and tone.
+INSTRUCTIONS:
+- If the sentence is SHORT or INCOMPLETE: Add natural, logical details to complete it without changing the core meaning.
+- If the sentence is already COMPLETE: Make minor improvements for clarity and flow.
+- Keep the original sentence structure and style as much as possible.
+- Add only necessary details - don't be overly dramatic or flowery.
+- Maintain a natural, professional tone.
+- Keep output to 1-2 sentences maximum.
+- Focus on clarity and completeness, not dramatic transformation.
+EXAMPLES:
+- "this man is eating" → "This man is eating lunch at his desk."
+- "the car is fast" → "The car is fast enough to handle highway speeds comfortably."
+- "she was walking" → "She was walking to the nearby coffee shop."
+OUTPUT_FORMAT: Return only the enhanced text, no explanations.`;
+
+            // User prompt with the selected text
+            const userPrompt = `[Input text: ${this.selectedText}]`;
             
-            // Prepare prompt
-            const prompt = `Improve the following text to make it more engaging, clear, and well-written while maintaining the original meaning and tone. Return only the improved text without any additional commentary:\n\n${this.selectedText}`;
-            
-            // Call Ollama with CORS handling and cache busting
-            console.log('🌐 Making request to Ollama...');
-            const requestUrl = `${this.ollamaUrl}/api/chat?t=${Date.now()}`;
-            console.log('🔗 Request URL:', requestUrl);
-            
-            const response = await fetch(requestUrl, {
+            const response = await fetch(`${this.ollamaUrl}/api/chat?t=${Date.now()}`, {
                 method: 'POST',
                 headers: { 
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                    'Cache-Control': 'no-cache'
+                    'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
                     model: this.model,
-                    messages: [{ role: 'user', content: prompt }],
+                    messages: [
+                        { role: 'system', content: systemPrompt },
+                        { role: 'user', content: userPrompt }
+                    ],
                     stream: false
                 }),
-                mode: 'cors',
-                cache: 'no-cache',
-                signal: AbortSignal.timeout(30000)
+                mode: 'cors'
             });
-            
-            console.log('📡 Response status:', response.status);
-            console.log('📡 Response headers:', [...response.headers.entries()]);
             
             if (!response.ok) {
                 throw new Error(`HTTP ${response.status}`);
@@ -310,142 +378,135 @@ class SimpleSubstackAI {
             const data = await response.json();
             const improvedText = data.message.content;
             
-            console.log('✅ Ollama response received:', improvedText.substring(0, 100));
+            console.log('✅ AI response received:', improvedText.substring(0, 100));
             
-            // Replace text
-            await this.replaceSelectedText(improvedText);
-            this.showSuccess();
+            // Update overlay with suggestion
+            this.showSuggestion(improvedText);
             
         } catch (error) {
-            console.error('❌ Ollama request failed:', error);
-            
-            // Check if it's a CORS error
-            if (error.message.includes('Failed to fetch') || error.message.includes('CORS')) {
-                console.error('🌐 CORS Error detected');
-                this.showError('CORS Error: Restart Ollama with: OLLAMA_ORIGINS="*" ollama serve');
-                
-                // Show helpful notification
-                this.showNotification(`
-                    ⚠️ CORS Error! In terminal run:
-                    pkill -f ollama
-                    OLLAMA_ORIGINS="*" ollama serve
-                `, '#ff6348');
-            } else {
-                this.showError(error.message);
-            }
+            console.error('❌ AI Error:', error);
+            this.showError(error.message);
         }
     }
     
-    async replaceSelectedText(newText) {
-        const selection = window.getSelection();
+    showSuggestion(improvedText) {
+        if (!this.overlay) return;
         
-        if (selection.rangeCount > 0) {
-            const range = selection.getRangeAt(0);
-            range.deleteContents();
-            range.insertNode(document.createTextNode(newText));
-            
-            // Clear selection
-            selection.removeAllRanges();
-            
-            console.log('✅ Text replaced successfully');
-        }
-    }
-    
-    showSuccess() {
-        if (this.floatingButton && this.floatingButton.style) {
-            this.floatingButton.innerHTML = '✅';
-            this.floatingButton.title = 'Text improved successfully!';
-            this.floatingButton.style.background = 'linear-gradient(135deg, #2ed573 0%, #27ae60 100%)';
-            
-            setTimeout(() => this.removeButton(), 2000);
-        }
+        const suggestionDiv = this.overlay.querySelector('.ai-suggestion');
+        const copyBtn = this.overlay.querySelector('.ai-btn-copy');
+        const applyBtn = this.overlay.querySelector('.ai-btn-apply');
         
-        this.showNotification('Text improved by AI! ✨', '#2ed573');
+        suggestionDiv.innerHTML = `<strong>AI Suggestion:</strong><br>${this.escapeHtml(improvedText)}`;
+        
+        // Enable buttons
+        copyBtn.disabled = false;
+        applyBtn.disabled = false;
+        
+        // Add event listeners
+        copyBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(improvedText);
+            copyBtn.textContent = 'Copied!';
+            setTimeout(() => copyBtn.textContent = 'Copy', 1000);
+            
+            // Optional: Auto-dismiss after copy (uncomment if desired)
+            // setTimeout(() => this.hideOverlay(), 1500);
+        });
+        
+        applyBtn.addEventListener('click', () => {
+            // Since we now return only improved text, use it directly
+            this.applyImprovement(improvedText);
+        });
     }
     
     showError(message) {
-        if (this.floatingButton && this.floatingButton.style) {
-            this.floatingButton.innerHTML = '❌';
-            this.floatingButton.title = `Error: ${message}`;
-            this.floatingButton.style.background = 'linear-gradient(135deg, #ff4757 0%, #c44569 100%)';
-            
-            setTimeout(() => this.removeButton(), 3000);
-        }
+        if (!this.overlay) return;
         
-        this.showNotification(`AI Error: ${message}`, '#ff4757');
+        const suggestionDiv = this.overlay.querySelector('.ai-suggestion');
+        suggestionDiv.innerHTML = `<div style="color: #dc2626;">❌ Error: ${this.escapeHtml(message)}</div>`;
+        
+        if (message.includes('Failed to fetch') || message.includes('CORS')) {
+            suggestionDiv.innerHTML += `<div style="margin-top: 8px; font-size: 12px; color: #6b7280;">Try: OLLAMA_ORIGINS="*" ollama serve</div>`;
+        }
     }
     
-    showNotification(message, color) {
-        const notification = document.createElement('div');
-        notification.textContent = message;
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: ${color};
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            z-index: 10002;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            opacity: 0;
-            transform: translateX(100px);
-            transition: all 0.3s ease;
-        `;
+    applyImprovement(improvedText) {
+        if (!this.currentSelection) {
+            console.log('❌ No selection to replace');
+            return;
+        }
         
-        document.body.appendChild(notification);
+        try {
+            // Clean up the improved text (remove extra whitespace)
+            const cleanText = improvedText.trim();
+            
+            if (!cleanText) {
+                console.error('❌ No improved text to apply');
+                return;
+            }
+            
+            // Replace the selected text in the HTML
+            this.currentSelection.deleteContents();
+            this.currentSelection.insertNode(document.createTextNode(cleanText));
+            
+            console.log('✅ Improved text applied to HTML:', cleanText.substring(0, 50) + '...');
+            
+            // Reset dismissal flag when text is applied - user might want to improve it further
+            this.overlayDismissed = false;
+            this.selectedText = ''; // Clear to ensure next selection is treated as new
+            console.log('🔄 Applied text - overlay can appear again for new selections');
+            
+            this.hideOverlay();
+            
+        } catch (error) {
+            console.error('❌ Failed to replace text:', error);
+        }
+    }
+    
+    // extractImprovedText method removed - AI now returns only improved text
+    
+    hideOverlay() {
+        if (this.overlay) {
+            // Set dismissal flag when overlay is manually closed
+            this.overlayDismissed = true;
+            console.log('❌ Overlay dismissed - won\'t show again until new selection');
+            
+            this.overlay.style.animation = 'slideIn 0.2s ease-in reverse';
+            setTimeout(() => {
+                if (this.overlay && this.overlay.parentNode) {
+                    this.overlay.parentNode.removeChild(this.overlay);
+                }
+                this.overlay = null;
+            }, 200);
+        }
         
-        setTimeout(() => {
-            notification.style.opacity = '1';
-            notification.style.transform = 'translateX(0)';
-        }, 10);
-        
-        setTimeout(() => {
-            notification.style.opacity = '0';
-            notification.style.transform = 'translateX(100px)';
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
+        if (this.overlayTimeout) {
+            clearTimeout(this.overlayTimeout);
+            this.overlayTimeout = null;
+        }
+    }
+    
+    escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 }
 
 // Initialize
-console.log('🔧 About to create SimpleSubstackAI instance...');
-const substackAI = new SimpleSubstackAI();
-console.log('🔧 SimpleSubstackAI instance created:', !!substackAI);
+console.log('🔧 Creating SubstackAIOverlay instance...');
+const substackAI = new SubstackAIOverlay();
+console.log('✅ SubstackAIOverlay ready!');
+console.log('📝 Instructions:');
+console.log('  ⚠️  AI assistant only works on /publish/post/ pages (writing/editing)');
+console.log('  1. Navigate to a Substack post you\'re writing or editing');
+console.log('  2. Select some text in the editor');
+console.log('  3. Wait 0.5 seconds for AI overlay to appear');
+console.log('  4. Choose to Apply, Copy, or Cancel the suggestion');
 
-// Global test functions
+// Test function
 window.testAI = function() {
-    console.log('🧪 AI Extension Test');
+    console.log('🧪 AI Extension Test - Overlay Version');
     console.log('  - Extension loaded:', !!substackAI);
     console.log('  - Current selection:', window.getSelection().toString());
-    return 'AI Extension is working!';
+    return 'AI Extension with overlay is working!';
 };
-
-window.forceButton = function() {
-    const fakeSelection = {
-        rangeCount: 1,
-        getRangeAt: () => ({
-            getBoundingClientRect: () => ({ top: 100, left: 200, width: 100, height: 20 })
-        })
-    };
-    substackAI.selectedText = 'Test text for button';
-    substackAI.showButton(fakeSelection);
-};
-
-console.log('✅ SUBSTACK AI READY! Try: testAI() or forceButton()');
-console.log('🎯 Highlight text to see auto-improvement in action!');
-
-// Add a simple click test to verify events work
-document.addEventListener('click', () => {
-    console.log('👆 CLICK EVENT DETECTED - Events are working!');
-});
-
-// Test that runs every 5 seconds to show script is alive
-let heartbeat = 0;
-setInterval(() => {
-    heartbeat++;
-    console.log(`💓 Heartbeat ${heartbeat} - Script is alive and running`);
-}, 5000);
